@@ -1,0 +1,6 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+// Redirect / to default locale index (e.g. /es/)
+return Astro.redirect(getRelativeLocaleUrl('es', ''));
+---
