@@ -1,1 +1,25 @@
 @import "tailwindcss";
+@source "../**/*.vue";
+
+@theme {
+  --color-ocean-50: #eff8ff;
+  --color-ocean-100: #dbeefe;
+  --color-ocean-200: #bfe0fe;
+  --color-ocean-300: #93ccfd;
+  --color-ocean-400: #60b0fa;
+  --color-ocean-500: #3b8ff6;
+  --color-ocean-600: #2570eb;
+  --color-ocean-700: #1d5bd8;
+  --color-ocean-800: #1e4aaf;
+  --color-ocean-900: #1e408a;
+  --color-sand-50: #fdf8f0;
+  --color-sand-100: #f9eddb;
+  --color-sand-200: #f2d8b5;
+  --color-sand-300: #e9bc86;
+  --color-sand-400: #df9a55;
+  --color-sand-500: #d78035;
+  --color-sand-600: #c9682a;
+  --color-sand-700: #a75125;
+  --color-sand-800: #874224;
+  --color-sand-900: #6e3820;
+}

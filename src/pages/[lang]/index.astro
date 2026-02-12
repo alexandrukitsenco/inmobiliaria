@@ -2,18 +2,84 @@
 import Layout from '../../layouts/Layout.astro';
 import { DEFAULT_LOCALE, type Locale } from '../../i18n/config';
 import { t } from '../../i18n/strings';
+import { apartamentos, contact } from '../../i18n/apartamentos';
+import { blueImages, paradiseImages } from '../../lib/apartment-images';
 
-export const getStaticPaths = () =>   [
+export const getStaticPaths = () => [
 	{ params: { lang: 'es' } },
 	{ params: { lang: 'en' } },
 	{ params: { lang: 'cat' } },
 ];
 
-const lang = (Astro.params?.lang as Locale ) ?? DEFAULT_LOCALE;
-console.log(Astro);
+const lang = (Astro.params?.lang as Locale) ?? DEFAULT_LOCALE;
+const welcome = apartamentos[lang].welcome;
+const blue = apartamentos[lang].blue;
+const paradise = apartamentos[lang].paradise;
+
+const apartments = [
+	{ id: 'blue', data: blue, image: blueImages[0] },
+	{ id: 'paradise', data: paradise, image: paradiseImages[0] },
+];
+
+const accommodationTitle = lang === 'es' ? 'Nuestros alojamientos' : lang === 'en' ? 'Our accommodation' : 'Els nostres allotjaments';
+const viewMore = lang === 'es' ? 'Ver más' : lang === 'en' ? 'View more' : 'Veure més';
 ---
-<Layout lang={lang} title={t(lang, 'home', 'title')}>
-	<div class="bg-gray-600 text-white p-4">
-		{t(lang, 'home', 'greeting')}
+<Layout lang={lang} title={welcome.title}>
+	<!-- Hero -->
+	<div class="relative bg-linear-to-br from-ocean-700 via-ocean-500 to-ocean-400 text-white overflow-hidden">
+		<svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 120" preserveAspectRatio="none">
+			<path fill="#fafcff" d="M0,96L60,85.3C120,75,240,53,360,53.3C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L0,120Z" />
+		</svg>
+		<div class="container mx-auto px-4 pt-20 pb-32 relative z-10 text-center">
+			<p class="text-ocean-200 text-sm uppercase tracking-widest mb-3">B&P Miami Playa</p>
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl mx-auto">{welcome.title}</h1>
+			<p class="mt-6 text-lg md:text-xl text-ocean-100 max-w-2xl mx-auto leading-relaxed">{welcome.intro}</p>
+		</div>
+	</div>
+
+	<div class="container mx-auto px-4 -mt-8 relative z-20">
+		<!-- Apartment cards -->
+		<section class="mb-16">
+			<h2 class="text-2xl md:text-3xl font-bold text-ocean-800 text-center mb-10">{accommodationTitle}</h2>
+			<div class="grid gap-8 md:grid-cols-2">
+				{apartments.map((apt) => (
+					<a
+						href={`/${lang}/apartamento/${apt.id}`}
+						class="group block rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white no-underline"
+					>
+						<div class="aspect-16/10 overflow-hidden bg-ocean-50">
+							<img
+								src={apt.image}
+								alt={apt.data.name}
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+							/>
+						</div>
+						<div class="p-6">
+							<p class="text-xs uppercase tracking-wider text-ocean-400 font-semibold mb-1">{apt.data.subtitle}</p>
+							<h3 class="text-xl font-bold text-gray-900 group-hover:text-ocean-600 transition-colors">{apt.data.name}</h3>
+							<p class="mt-2 text-gray-500 text-sm leading-relaxed line-clamp-2">{apt.data.shortDescription}</p>
+							<div class="mt-4 flex items-center gap-1 text-ocean-500 text-sm font-semibold">
+								<span>{viewMore}</span>
+								<span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+							</div>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<!-- About section -->
+		<section class="mb-16 max-w-3xl mx-auto text-center">
+			<div class="rounded-2xl bg-linear-to-br from-ocean-50 to-sand-50 p-8 md:p-12 border border-ocean-100">
+				<span class="text-4xl mb-4 block">&#x1F30A;</span>
+				<p class="text-gray-600 leading-relaxed">{welcome.body}</p>
+			</div>
+		</section>
+
+		<!-- Contact -->
+		<footer class="mb-16 text-center text-sm text-gray-400 border-t border-ocean-100 pt-8">
+			<p class="text-ocean-400 font-medium">{contact.name}</p>
+			<p class="mt-1">{contact.phone} &middot; {contact.email}</p>
+		</footer>
 	</div>
 </Layout>

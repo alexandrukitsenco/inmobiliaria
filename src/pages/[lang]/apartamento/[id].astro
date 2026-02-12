@@ -1,0 +1,198 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ApartmentGallery from '../../../components/ApartmentGallery.vue';
+import { DEFAULT_LOCALE, LOCALES, type Locale } from '../../../i18n/config';
+import { apartamentos, APARTMENT_IDS, type ApartmentId, contact } from '../../../i18n/apartamentos';
+import { t } from '../../../i18n/strings';
+import { blueImages, paradiseImages } from '../../../lib/apartment-images';
+
+function isApartmentId(id: string): id is ApartmentId {
+  return APARTMENT_IDS.includes(id as ApartmentId);
+}
+
+export const getStaticPaths = () => {
+  const paths: { params: { lang: string; id: string } }[] = [];
+  for (const lang of LOCALES) {
+    for (const id of APARTMENT_IDS) {
+      paths.push({ params: { lang, id } });
+    }
+  }
+  return paths;
+};
+
+const lang = (Astro.params?.lang as Locale) ?? DEFAULT_LOCALE;
+const id = Astro.params?.id ?? '';
+
+if (!isApartmentId(id)) {
+  return Astro.redirect(`/${lang}/`);
+}
+
+const apt = apartamentos[lang][id] as typeof apartamentos.es.blue;
+const booking = apartamentos[lang].booking;
+
+const apartmentImages: string[] = id === 'blue' ? blueImages : paradiseImages;
+---
+
+<Layout lang={lang} title={apt.name}>
+  <!-- Hero -->
+  <div class="relative bg-linear-to-b from-ocean-600 to-ocean-400 text-white overflow-hidden">
+    <!-- Wave SVG bottom -->
+    <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path fill="white" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L0,120Z" />
+    </svg>
+    <div class="container mx-auto px-4 pt-12 pb-24 relative z-10">
+      <p class="text-sm uppercase tracking-widest text-ocean-100 mb-2">{apt.subtitle}</p>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight">{apt.name}</h1>
+      <p class="mt-4 text-lg md:text-xl text-ocean-50 max-w-2xl leading-relaxed">{apt.shortDescription}</p>
+      <div class="flex flex-wrap gap-4 mt-6 text-sm text-ocean-100">
+        <span class="flex items-center gap-1.5">
+          <span>&#x1F464;</span> {apt.maxGuests} {t(lang, 'apartment', 'maxGuests')}
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span>&#x1F6CF;</span> {Object.values(apt.features).length > 0 && Object.values(apt.features)[0]}
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span>&#x1F551;</span> {apt.checkIn} &middot; {apt.checkOut}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <article class="container mx-auto px-4 -mt-4 relative z-20">
+    <!-- Gallery + Description -->
+    <section class="mb-12 grid gap-6 lg:grid-cols-5">
+      <!-- Gallery: 3 of 5 columns on lg -->
+      <div class="lg:col-span-3 rounded-xl overflow-hidden shadow-lg bg-white p-2 sm:p-3">
+        <ApartmentGallery client:load images={apartmentImages} />
+      </div>
+
+      <!-- Description sidebar: 2 of 5 columns on lg -->
+      <div class="lg:col-span-2 flex flex-col gap-4">
+        <div class="rounded-xl border border-ocean-100 bg-white p-5 flex-1">
+          <h2 class="flex items-center gap-2 text-lg font-bold text-ocean-800 mb-3">
+            <span class="text-ocean-400">&#x2693;</span>
+            {t(lang, 'apartment', 'description')}
+          </h2>
+          <div class="whitespace-pre-line text-sm text-gray-600 leading-relaxed">{apt.description}</div>
+        </div>
+
+        <!-- Quick info card -->
+        <div class="rounded-xl border border-ocean-200 bg-ocean-50/50 p-5">
+          <div class="flex items-center gap-3 text-sm text-gray-600 mb-2">
+            <span class="text-ocean-400">&#x1F464;</span>
+            <span>{apt.maxGuests} {t(lang, 'apartment', 'maxGuests')}</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-gray-600 mb-2">
+            <span class="text-ocean-400">&#x1F551;</span>
+            <span>{apt.checkIn}</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-gray-600">
+            <span class="text-ocean-400">&#x1F551;</span>
+            <span>{apt.checkOut}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features + Services grid -->
+    <section class="mb-12 grid gap-6 lg:grid-cols-2">
+      <!-- Features card -->
+      <div class="rounded-xl border border-ocean-100 bg-ocean-50/50 p-6">
+        <h2 class="flex items-center gap-2 text-xl font-bold text-ocean-800 mb-4">
+          <span class="text-ocean-400">&#x2B50;</span>
+          {t(lang, 'apartment', 'features')}
+        </h2>
+        <ul class="grid gap-2 sm:grid-cols-2">
+          {Object.entries(apt.features).map(([, value]) => (
+            <li class="flex items-start gap-2 text-gray-700">
+              <span class="mt-0.5 text-ocean-500">&#x2714;</span>
+              <span>{value}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Services card -->
+      <div class="rounded-xl border border-sand-200 bg-sand-50/50 p-6">
+        <h2 class="flex items-center gap-2 text-xl font-bold text-sand-800 mb-4">
+          <span class="text-sand-400">&#x1F3D6;</span>
+          {t(lang, 'apartment', 'services')}
+        </h2>
+        <ul class="space-y-2 text-gray-700">
+          {Object.entries(apt.services).map(([, value]) => (
+            <li class="flex items-start gap-2">
+              <span class="mt-0.5 text-sand-500">&#x25C6;</span>
+              <span>{value}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section class="mb-12 rounded-xl bg-linear-to-br from-ocean-50 to-ocean-100 p-6 md:p-8 border border-ocean-200">
+      <h2 class="flex items-center gap-2 text-2xl font-bold text-ocean-800 mb-4">
+        <span class="text-ocean-400">&#x1F4CD;</span>
+        {t(lang, 'apartment', 'location')}
+      </h2>
+      <p class="whitespace-pre-line text-gray-700 leading-relaxed">{apt.areaInfo}</p>
+    </section>
+
+    <!-- Booking info -->
+    <section class="mb-12">
+      <div class="relative rounded-xl overflow-hidden bg-linear-to-r from-ocean-600 to-ocean-500 text-white p-6 md:p-8">
+        <svg class="absolute -right-8 -bottom-8 w-40 h-40 text-ocean-400/20" viewBox="0 0 100 100" fill="currentColor">
+          <circle cx="50" cy="50" r="50" />
+        </svg>
+        <h2 class="text-2xl font-bold mb-6 relative z-10">
+          {booking.checkInTitle} / {booking.checkOutTitle}
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-6 relative z-10">
+          <div>
+            <p class="text-3xl font-bold">{booking.checkInTime}</p>
+            <p class="text-ocean-100 text-sm mt-1">{booking.checkInTitle}</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold">{booking.checkOutTime}</p>
+            <p class="text-ocean-100 text-sm mt-1">{booking.checkOutTitle}</p>
+          </div>
+        </div>
+        <p class="text-sm text-ocean-100 mt-4 relative z-10">{booking.checkInNote}</p>
+      </div>
+    </section>
+
+    <!-- Reservation steps -->
+    <section class="mb-12 max-w-3xl">
+      <h2 class="flex items-center gap-2 text-2xl font-bold text-ocean-800 mb-4">
+        <span class="text-ocean-400">&#x1F4DD;</span>
+        {booking.reservationTitle}
+      </h2>
+      <p class="whitespace-pre-line text-gray-600 leading-relaxed">{booking.reservationSteps}</p>
+    </section>
+
+    <!-- Rules -->
+    <section class="mb-12 rounded-xl border border-gray-200 bg-white p-6 md:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-gray-800 mb-4">
+        <span class="text-ocean-400">&#x1F4CB;</span>
+        {booking.rulesTitle}
+      </h2>
+      <ul class="space-y-2 text-gray-600">
+        {booking.rules.map((rule) => (
+          <li class="flex items-start gap-2">
+            <span class="mt-1 text-ocean-400">&#x2022;</span>
+            <span>{rule}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Footer / license -->
+    <footer class="mb-16 text-center text-sm text-gray-400 border-t border-ocean-100 pt-8">
+      <p>{booking.licenseNote}</p>
+      <p class="mt-1">{t(lang, 'apartment', 'register')}: {apt.license}</p>
+      <p class="mt-4 text-ocean-400">
+        {contact.name} &middot; {contact.phone} &middot; {contact.email}
+      </p>
+    </footer>
+  </article>
+</Layout>

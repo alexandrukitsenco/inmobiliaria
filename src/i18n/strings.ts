@@ -23,6 +23,14 @@ export const strings = {
       about: 'Nosotros',
       language: 'Idioma',
     },
+    apartment: {
+      description: 'Descripción',
+      features: 'Características',
+      services: 'Servicios',
+      maxGuests: 'personas máx.',
+      location: 'Ubicación',
+      register: 'Registro',
+    },
   },
   en: {
     app: {
@@ -41,6 +49,14 @@ export const strings = {
       about: 'About us',
       language: 'Language',
     },
+    apartment: {
+      description: 'Description',
+      features: 'Features',
+      services: 'Services',
+      maxGuests: 'guests max.',
+      location: 'Location',
+      register: 'Registration',
+    },
   },
   cat: {
     app: {
@@ -58,6 +74,14 @@ export const strings = {
       home: 'Inici',
       about: 'Nosaltres',
       language: 'Llengua',
+    },
+    apartment: {
+      description: 'Descripció',
+      features: 'Característiques',
+      services: 'Serveis',
+      maxGuests: 'persones màx.',
+      location: 'Ubicació',
+      register: 'Registre',
     },
   },
 } as const;
