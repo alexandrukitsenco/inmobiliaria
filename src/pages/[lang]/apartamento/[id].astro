@@ -2,7 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import ApartmentGallery from '../../../components/ApartmentGallery.vue';
 import { DEFAULT_LOCALE, LOCALES, type Locale } from '../../../i18n/config';
-import { apartamentos, APARTMENT_IDS, type ApartmentId, contact } from '../../../i18n/apartamentos';
+import { apartamentos, APARTMENT_IDS, type ApartmentId, contact, bookingUrls } from '../../../i18n/apartamentos';
 import { t } from '../../../i18n/strings';
 import { blueImages, paradiseImages } from '../../../lib/apartment-images';
 
@@ -31,6 +31,7 @@ const apt = apartamentos[lang][id] as typeof apartamentos.es.blue;
 const booking = apartamentos[lang].booking;
 
 const apartmentImages: string[] = id === 'blue' ? blueImages : paradiseImages;
+const bookingUrl = bookingUrls[id];
 ---
 
 <Layout lang={lang} title={apt.name}>
@@ -195,4 +196,17 @@ const apartmentImages: string[] = id === 'blue' ? blueImages : paradiseImages;
       </p>
     </footer>
   </article>
+
+  <!-- Floating book button -->
+  <a
+    href={bookingUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+    {t(lang, 'apartment', 'bookNow')}
+  </a>
 </Layout>

@@ -30,6 +30,7 @@ export const strings = {
       maxGuests: 'personas máx.',
       location: 'Ubicación',
       register: 'Registro',
+      bookNow: 'Reservar ahora',
     },
   },
   en: {
@@ -56,6 +57,7 @@ export const strings = {
       maxGuests: 'guests max.',
       location: 'Location',
       register: 'Registration',
+      bookNow: 'Book now',
     },
   },
   cat: {
@@ -82,6 +84,7 @@ export const strings = {
       maxGuests: 'persones màx.',
       location: 'Ubicació',
       register: 'Registre',
+      bookNow: 'Reservar ara',
     },
   },
 } as const;

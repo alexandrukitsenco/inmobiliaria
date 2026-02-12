@@ -15,6 +15,14 @@ export const contact = {
 } as const;
 
 /**
+ * Booking URLs per apartment. Update these with the real Booking.com (or other) links.
+ */
+export const bookingUrls: Record<ApartmentId, string> = {
+  blue: 'https://www.booking.com/',
+  paradise: 'https://www.booking.com/',
+} as const;
+
+/**
  * Apartments and house content in three locales (es, en, cat).
  * Use: apartamentos[lang].welcome, apartamentos[lang].blue, apartamentos[lang].paradise, apartamentos[lang].booking.
  */
