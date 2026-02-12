@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.vue';
+import type { Locale } from '../i18n/config';
 
 interface Props {
 	lang: string;
@@ -7,6 +10,8 @@ interface Props {
 }
 
 const { lang = 'es', title = 'Astro Basics' } = Astro.props;
+const pathname = Astro.url.pathname;
+const locale = lang as Locale;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -17,9 +22,13 @@ const { lang = 'es', title = 'Astro Basics' } = Astro.props;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ClientRouter />
 	</head>
 	<body>
-		<slot />
+		<Header client:load lang={locale} pathname={pathname} />
+		<main transition:name="main" transition:animate="fade">
+			<slot />
+		</main>
 	</body>
 </html>
 

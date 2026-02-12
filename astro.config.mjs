@@ -7,7 +7,7 @@ import vue from '@astrojs/vue';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  integrations: [vue()],
+  integrations: [vue({ appEntrypoint: '/src/pages/_app' })],
   i18n: {
     locales: ["es", "en", "cat"],
     defaultLocale: "es",

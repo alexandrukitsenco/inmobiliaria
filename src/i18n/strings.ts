@@ -7,6 +7,9 @@ import { DEFAULT_LOCALE } from './config';
  */
 export const strings = {
   es: {
+    app: {
+      name: 'Inmobiliaria',
+    },
     home: {
       greeting: 'Hola Mundo!!',
       title: 'Inicio',
@@ -18,9 +21,13 @@ export const strings = {
     nav: {
       home: 'Inicio',
       about: 'Nosotros',
+      language: 'Idioma',
     },
   },
   en: {
+    app: {
+      name: 'Real Estate',
+    },
     home: {
       greeting: 'Hello World!!',
       title: 'Home',
@@ -32,9 +39,13 @@ export const strings = {
     nav: {
       home: 'Home',
       about: 'About us',
+      language: 'Language',
     },
   },
   cat: {
+    app: {
+      name: 'Immobiliària',
+    },
     home: {
       greeting: 'Hola Món!!',
       title: 'Inici',
@@ -46,6 +57,7 @@ export const strings = {
     nav: {
       home: 'Inici',
       about: 'Nosaltres',
+      language: 'Llengua',
     },
   },
 } as const;
