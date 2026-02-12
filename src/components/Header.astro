@@ -1,6 +1,9 @@
 ---
 import LangSelector from './LangSelector.vue';
+import MobileMenu from './MobileMenu.vue';
 import type { Locale } from '../i18n/config';
+import { apartamentos } from '../i18n/apartamentos';
+import { t } from '../i18n/strings';
 
 interface Props {
   lang: Locale;
@@ -8,16 +11,68 @@ interface Props {
 }
 
 const { lang, pathname } = Astro.props;
+
+const blue = apartamentos[lang].blue;
+const paradise = apartamentos[lang].paradise;
+
+const apartmentLinks = [
+  { name: blue.name, href: `/${lang}/apartamento/blue` },
+  { name: paradise.name, href: `/${lang}/apartamento/paradise` },
+];
+
+const menuLabels = {
+  home: t(lang, 'nav', 'home'),
+  apartments: t(lang, 'nav', 'apartments'),
+  language: t(lang, 'nav', 'language'),
+  menu: t(lang, 'nav', 'menu'),
+};
+
+/** Check if a link matches the current page */
+function isActive(href: string): boolean {
+  const clean = pathname.replace(/\/+$/, '');
+  const target = href.replace(/\/+$/, '');
+  return clean === target;
+}
+
+const isHome = isActive(`/${lang}`);
 ---
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-ocean-100">
   <div class="container mx-auto px-4 flex items-center justify-between py-3">
-    <a href={`/${lang}/`} class="flex items-center gap-2 no-underline text-ocean-800 hover:text-ocean-600 transition-colors">
+    <!-- Logo -->
+    <a href={`/${lang}/`} class:list={[
+      "flex items-center gap-2 no-underline transition-colors",
+      isHome ? "text-ocean-600" : "text-ocean-800 hover:text-ocean-600"
+    ]}>
       <img src="/logo.svg" alt="B&P Miami Playa" class="h-9 w-auto" />
       <span class="font-bold text-lg tracking-tight">B&P Miami Playa</span>
     </a>
-    <nav class="flex items-center gap-4">
+
+    <!-- Desktop nav (hidden on mobile) -->
+    <nav class="hidden md:flex items-center gap-6">
+      {apartmentLinks.map((apt) => (
+        <a
+          href={apt.href}
+          class:list={[
+            "text-sm font-medium no-underline transition-colors relative pb-1",
+            isActive(apt.href)
+              ? "text-ocean-600 border-b-2 border-ocean-500"
+              : "text-gray-600 hover:text-ocean-600"
+          ]}
+        >
+          {apt.name}
+        </a>
+      ))}
       <LangSelector client:load currentLang={lang} pathname={pathname} />
     </nav>
+
+    <!-- Mobile menu (hidden on desktop) -->
+    <MobileMenu
+      client:load
+      lang={lang}
+      pathname={pathname}
+      labels={menuLabels}
+      apartmentLinks={apartmentLinks}
+    />
   </div>
 </header>

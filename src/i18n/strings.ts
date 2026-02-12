@@ -22,6 +22,8 @@ export const strings = {
       home: 'Inicio',
       about: 'Nosotros',
       language: 'Idioma',
+      apartments: 'Apartamentos',
+      menu: 'Menú',
     },
     apartment: {
       description: 'Descripción',
@@ -49,6 +51,8 @@ export const strings = {
       home: 'Home',
       about: 'About us',
       language: 'Language',
+      apartments: 'Apartments',
+      menu: 'Menu',
     },
     apartment: {
       description: 'Description',
@@ -76,6 +80,8 @@ export const strings = {
       home: 'Inici',
       about: 'Nosaltres',
       language: 'Llengua',
+      apartments: 'Apartaments',
+      menu: 'Menú',
     },
     apartment: {
       description: 'Descripció',
