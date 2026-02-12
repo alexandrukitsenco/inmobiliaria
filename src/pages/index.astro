@@ -1,6 +1,15 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-
-// Redirect / to default locale index (e.g. /es/)
-return Astro.redirect(getRelativeLocaleUrl('es', ''));
+import { DEFAULT_LOCALE } from '../i18n/config';
+const redirectUrl = `/${DEFAULT_LOCALE}/`;
 ---
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
+    <link rel="canonical" href={redirectUrl} />
+    <script define:vars={{ redirectUrl }}>
+      window.location.replace(redirectUrl);
+    </script>
+  </head>
+  <body></body>
+</html>
