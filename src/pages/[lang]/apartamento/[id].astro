@@ -34,18 +34,30 @@ const apartmentImages: string[] = id === 'blue' ? blueImages : paradiseImages;
 const bookingUrl = bookingUrls[id];
 ---
 
-<Layout lang={lang} title={apt.name}>
-  <!-- Hero -->
-  <div class="relative bg-linear-to-b from-ocean-600 to-ocean-400 text-white overflow-hidden">
+<Layout lang={lang} title={apt.name} preloadImage={apartmentImages[0]}>
+  <!-- Hero with apartment photo -->
+  <div class="relative text-white overflow-hidden">
+    <!-- Background image (first apartment photo) -->
+    <img
+      src={apartmentImages[0]}
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <!-- Blue overlay for readability -->
+    <div class="absolute inset-0 bg-ocean-900/60 mix-blend-multiply"></div>
+    <div class="absolute inset-0 bg-linear-to-b from-ocean-800/30 via-transparent to-ocean-900/70"></div>
     <!-- Wave SVG bottom -->
-    <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <svg class="absolute bottom-0 left-0 w-full z-10" viewBox="0 0 1440 120" preserveAspectRatio="none">
       <path fill="white" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L0,120Z" />
     </svg>
-    <div class="container mx-auto px-4 pt-12 pb-24 relative z-10">
-      <p class="text-sm uppercase tracking-widest text-ocean-100 mb-2">{apt.subtitle}</p>
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight">{apt.name}</h1>
-      <p class="mt-4 text-lg md:text-xl text-ocean-50 max-w-2xl leading-relaxed">{apt.shortDescription}</p>
-      <div class="flex flex-wrap gap-4 mt-6 text-sm text-ocean-100">
+    <div class="container mx-auto px-4 pt-14 pb-28 relative z-10">
+      <p class="text-sm uppercase tracking-widest text-white/70 mb-2">{apt.subtitle}</p>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight drop-shadow-lg">{apt.name}</h1>
+      <p class="mt-4 text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed drop-shadow">{apt.shortDescription}</p>
+      <div class="flex flex-wrap gap-4 mt-6 text-sm text-white/70">
         <span class="flex items-center gap-1.5">
           <span>&#x1F464;</span> {apt.maxGuests} {t(lang, 'apartment', 'maxGuests')}
         </span>

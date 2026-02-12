@@ -7,21 +7,26 @@ import type { Locale } from '../i18n/config';
 interface Props {
 	lang: string;
 	title?: string;
+	preloadImage?: string;
 }
 
-const { lang = 'es', title = 'Astro Basics' } = Astro.props;
+const { lang = 'es', title = 'Astro Basics', preloadImage } = Astro.props;
 const pathname = Astro.url.pathname;
 const locale = lang as Locale;
 ---
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<meta name="color-scheme" content="light only" />
+		<link rel="icon" type="image/png" href="/logo.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		{preloadImage && <link rel="preload" as="image" href={preloadImage} />}
 		<ClientRouter />
 	</head>
 	<body>
@@ -42,6 +47,6 @@ const locale = lang as Locale;
 	}
 	body {
 		background-color: #fafcff;
-		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+		font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 	}
 </style>

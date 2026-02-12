@@ -1,15 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { DEFAULT_LOCALE, type Locale } from '../../i18n/config';
+import { DEFAULT_LOCALE, LOCALES, type Locale } from '../../i18n/config';
 import { t } from '../../i18n/strings';
 import { apartamentos, contact } from '../../i18n/apartamentos';
 import { blueImages, paradiseImages } from '../../lib/apartment-images';
 
-export const getStaticPaths = () => [
-	{ params: { lang: 'es' } },
-	{ params: { lang: 'en' } },
-	{ params: { lang: 'cat' } },
-];
+export const getStaticPaths = () =>
+	LOCALES.map((lang) => ({ params: { lang } }));
 
 const lang = (Astro.params?.lang as Locale) ?? DEFAULT_LOCALE;
 const welcome = apartamentos[lang].welcome;
@@ -21,23 +18,36 @@ const apartments = [
 	{ id: 'paradise', data: paradise, image: paradiseImages[0] },
 ];
 
-const accommodationTitle = lang === 'es' ? 'Nuestros alojamientos' : lang === 'en' ? 'Our accommodation' : 'Els nostres allotjaments';
-const viewMore = lang === 'es' ? 'Ver más' : lang === 'en' ? 'View more' : 'Veure més';
+const accommodationTitle = t(lang, 'nav', 'ourAccommodation');
+const viewMore = t(lang, 'nav', 'viewMore');
 ---
 <Layout lang={lang} title={welcome.title}>
-	<!-- Hero -->
-	<div class="relative bg-linear-to-br from-ocean-700 via-ocean-500 to-ocean-400 text-white overflow-hidden">
-		<svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 120" preserveAspectRatio="none">
+	<!-- Hero with beach photo -->
+	<div class="relative text-white overflow-hidden">
+		<!-- Background image -->
+		<img
+			src="/hero-beach.webp"
+			alt=""
+			class="absolute inset-0 w-full h-full object-cover object-center"
+			loading="eager"
+			fetchpriority="high"
+			decoding="async"
+		/>
+		<!-- Blue overlay for readability -->
+		<div class="absolute inset-0 bg-ocean-900/60 mix-blend-multiply"></div>
+		<div class="absolute inset-0 bg-linear-to-b from-ocean-800/40 via-transparent to-ocean-900/70"></div>
+		<!-- Wave SVG bottom -->
+		<svg class="absolute bottom-0 left-0 w-full z-10" viewBox="0 0 1440 120" preserveAspectRatio="none">
 			<path fill="#fafcff" d="M0,96L60,85.3C120,75,240,53,360,53.3C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L0,120Z" />
 		</svg>
-		<div class="container mx-auto px-4 pt-20 pb-32 relative z-10 text-center">
-			<p class="text-ocean-200 text-sm uppercase tracking-widest mb-3">B&P Miami Playa</p>
-			<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl mx-auto">{welcome.title}</h1>
-			<p class="mt-6 text-lg md:text-xl text-ocean-100 max-w-2xl mx-auto leading-relaxed">{welcome.intro}</p>
+		<div class="container mx-auto px-4 pt-20 pb-40 md:pt-24 md:pb-44 relative z-10 text-center">
+			<p class="text-white/70 text-sm uppercase tracking-widest mb-3">B&P Miami Playa</p>
+			<h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl mx-auto drop-shadow-lg">{welcome.title}</h1>
+			<p class="mt-4 md:mt-6 text-base md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed drop-shadow">{welcome.intro}</p>
 		</div>
 	</div>
 
-	<div class="container mx-auto px-6 -mt-8 relative z-20">
+	<div class="container mx-auto px-6 relative z-20">
 		<!-- Apartment cards -->
 		<section class="mb-16">
 			<h2 class="text-2xl md:text-3xl font-bold text-ocean-800 text-center mb-10">{accommodationTitle}</h2>
@@ -51,6 +61,8 @@ const viewMore = lang === 'es' ? 'Ver más' : lang === 'en' ? 'View more' : 'Veu
 							<img
 								src={apt.image}
 								alt={apt.data.name}
+								loading="lazy"
+								decoding="async"
 								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
 							/>
 						</div>

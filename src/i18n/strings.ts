@@ -24,6 +24,8 @@ export const strings = {
       language: 'Idioma',
       apartments: 'Apartamentos',
       menu: 'Menú',
+      ourAccommodation: 'Nuestros alojamientos',
+      viewMore: 'Ver más',
     },
     apartment: {
       description: 'Descripción',
@@ -53,6 +55,8 @@ export const strings = {
       language: 'Language',
       apartments: 'Apartments',
       menu: 'Menu',
+      ourAccommodation: 'Our accommodation',
+      viewMore: 'View more',
     },
     apartment: {
       description: 'Description',
@@ -82,6 +86,8 @@ export const strings = {
       language: 'Llengua',
       apartments: 'Apartaments',
       menu: 'Menú',
+      ourAccommodation: 'Els nostres allotjaments',
+      viewMore: 'Veure més',
     },
     apartment: {
       description: 'Descripció',
@@ -91,6 +97,37 @@ export const strings = {
       location: 'Ubicació',
       register: 'Registre',
       bookNow: 'Reservar ara',
+    },
+  },
+  fr: {
+    app: {
+      name: 'Immobilier',
+    },
+    home: {
+      greeting: 'Bonjour le Monde !!',
+      title: 'Accueil',
+    },
+    common: {
+      loading: 'Chargement...',
+      error: 'Une erreur est survenue',
+    },
+    nav: {
+      home: 'Accueil',
+      about: 'À propos',
+      language: 'Langue',
+      apartments: 'Appartements',
+      menu: 'Menu',
+      ourAccommodation: 'Nos hébergements',
+      viewMore: 'Voir plus',
+    },
+    apartment: {
+      description: 'Description',
+      features: 'Caractéristiques',
+      services: 'Services',
+      maxGuests: 'personnes max.',
+      location: 'Emplacement',
+      register: 'Enregistrement',
+      bookNow: 'Réserver maintenant',
     },
   },
 } as const;

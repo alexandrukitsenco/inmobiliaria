@@ -22,4 +22,9 @@
   --color-sand-700: #a75125;
   --color-sand-800: #874224;
   --color-sand-900: #6e3820;
+  --font-heading: 'Lora', Georgia, 'Times New Roman', serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
 }

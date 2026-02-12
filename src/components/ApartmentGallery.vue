@@ -20,13 +20,16 @@ const responsiveOptions = ref([
     { breakpoint: '640px',  numVisible: 3 },
 ]);
 
+const activeIndex = ref(0);
+
 const images = computed(() => {
-  return props.images.map((src) => ({ src }));
+  return props.images.map((src, index) => ({ src, index }));
 });
 </script>
 
 <template>
   <Galleria
+    v-model:activeIndex="activeIndex"
     :value="images"
     :num-visible="7"
     :responsive-options="responsiveOptions"
@@ -43,6 +46,9 @@ const images = computed(() => {
         <img
           :src="item.src"
           :alt="item.alt ?? 'Alojamiento'"
+          :loading="item.index === 0 ? 'eager' : 'lazy'"
+          :fetchpriority="item.index === 0 ? 'high' : 'auto'"
+          decoding="async"
           class="max-w-full max-h-full w-auto h-auto object-contain object-center"
         />
       </div>
@@ -53,6 +59,8 @@ const images = computed(() => {
           v-if="item?.src"
           :src="item.src"
           :alt="item.alt ?? 'Alojamiento'"
+          loading="lazy"
+          decoding="async"
           class="w-full h-full object-cover"
         />
       </div>

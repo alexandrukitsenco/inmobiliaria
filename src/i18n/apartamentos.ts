@@ -31,7 +31,7 @@ export const apartamentos = {
     welcome: {
       title: 'Bienvenidos a B&P nuestros alojamientos en Miami Playa',
       intro:
-        'En el corazón de la Costa Dorada, B&P Miami Playa ofrece alojamientos diseñados para aquellos que buscan una experiencia de descanso completa, rodeados de naturaleza y serenidad. A pocos minutos de las hermosas playas de Miami Platja y con fácil acceso a las montañas, estos alojamientos son ideales para disfrutar de una escapada donde el tiempo parece detenerse.',
+        'Descanso, playa y naturaleza en la Costa Dorada. Alojamientos a pocos minutos de las playas de Miami Platja, ideales para desconectar.',
       body: `Durante tu estancia, tendrás la oportunidad de desconectar y sumergirte en actividades al aire libre como senderismo por los senderos que recorren la costa o los parques naturales cercanos, disfrutar de las cristalinas aguas de la playa o simplemente relajarte bajo el sol mediterráneo. Además, la región ofrece una rica gastronomía con sus famosos pescados y arroces, así como un impresionante patrimonio cultural. En B&P Miami Playa, la comodidad y el diseño de nuestros alojamientos se complementan con la belleza del entorno, brindándote una estancia única, donde lo más importante es disfrutar de la calma, el paisaje y la experiencia completa que solo este rincón de Tarragona puede ofrecer.`,
     },
     blue: {
@@ -157,7 +157,7 @@ El salón-comedor cuenta con Smart TV de 50" y conexión WiFi. La cocina está c
     welcome: {
       title: 'Welcome to B&P – Our accommodation in Miami Playa',
       intro:
-        'In the heart of the Costa Dorada, B&P Miami Playa offers accommodation designed for those seeking a complete rest experience, surrounded by nature and serenity. Just minutes from the beautiful beaches of Miami Platja and with easy access to the mountains, these properties are ideal for a getaway where time seems to stand still.',
+        'Rest, beach and nature on the Costa Dorada. Accommodation just minutes from the beaches of Miami Platja, perfect for switching off.',
       body: `During your stay, you will have the chance to unwind and enjoy outdoor activities such as hiking along the coastal trails or nearby natural parks, swimming in the crystal-clear waters of the beach, or simply relaxing under the Mediterranean sun. The region also offers rich gastronomy with its famous fish and rice dishes, as well as an impressive cultural heritage. At B&P Miami Playa, the comfort and design of our accommodation are complemented by the beauty of the surroundings, offering you a unique stay where what matters most is enjoying the calm, the landscape, and the full experience that only this corner of Tarragona can provide.`,
     },
     blue: {
@@ -283,7 +283,7 @@ The living-dining room has a 50" Smart TV and WiFi. The kitchen is fully equippe
     welcome: {
       title: 'Benvinguts a B&P – Els nostres allotjaments a Miami Playa',
       intro:
-        'Al cor de la Costa Daurada, B&P Miami Playa ofereix allotjaments dissenyats per a qui busca una experiència de descans completa, envoltats de natura i serenitat. A pocs minuts de les platges de Miami Platja i amb fàcil accés a la muntanya, aquests allotjaments són ideals per gaudir d’una escapada on el temps sembla aturar-se.',
+        'Descans, platja i natura a la Costa Daurada. Allotjaments a pocs minuts de les platges de Miami Platja, ideals per desconnectar.',
       body: `Durant la teva estada, tindràs l’oportunitat de desconnectar i submergir-te en activitats a l’aire lliure com el senderisme pels senders de la costa o els parcs naturals propers, gaudir de les aigües cristal·lines de la platja o simplement relaxar-te sota el sol mediterrani. A més, la regió ofereix una rica gastronomia amb els seus famosos peixos i arròsos, així com un patrimoni cultural impressionant. A B&P Miami Playa, la comoditat i el disseny dels nostres allotjaments es complementen amb la bellesa de l’entorn, oferint-te una estada única, on el més important és gaudir de la calma, el paisatge i l’experiència que només aquest racó de Tarragona pot oferir.`,
     },
     blue: {
@@ -403,6 +403,132 @@ El menjador-saló té Smart TV de 50" i WiFi. La cuina està completament equipa
       ],
       licenseNote:
         'Allotjament inscrit al Registre de Turisme de Catalunya, d’acord amb la normativa de vivendes d’ús turístic.',
+    },
+  },
+  fr: {
+    welcome: {
+      title: 'Bienvenue chez B&P – Nos hébergements à Miami Playa',
+      intro:
+        'Repos, plage et nature sur la Costa Dorada. Hébergements à quelques minutes des plages de Miami Platja, parfaits pour déconnecter.',
+      body: `Pendant votre séjour, vous aurez l'occasion de vous déconnecter et de profiter d'activités en plein air comme la randonnée le long des sentiers côtiers ou des parcs naturels voisins, la baignade dans les eaux cristallines de la plage ou tout simplement vous détendre sous le soleil méditerranéen. La région offre également une riche gastronomie avec ses célèbres poissons et plats de riz, ainsi qu'un patrimoine culturel impressionnant. Chez B&P Miami Playa, le confort et le design de nos hébergements se complètent avec la beauté de l'environnement, vous offrant un séjour unique où l'essentiel est de profiter du calme, du paysage et de l'expérience que seul ce coin de Tarragone peut offrir.`,
+    },
+    blue: {
+      name: 'Appartement Blue',
+      subtitle: 'B&P Miami Playa Blue',
+      shortDescription:
+        'Appartement de deux chambres avec tout le confort, au premier étage, en plein centre de Miami Platja, à deux pas de la plage.',
+      description: `L'appartement B&P Miami Playa Blue est situé au premier étage de l'immeuble, avec accès par escalier, en plein centre de Miami Platja, à deux pas de la plage, ce qui en fait une option idéale pour oublier la voiture et se déplacer confortablement à pied.
+
+Il dispose de deux chambres accueillantes : l'une avec un lit double de 135 cm et l'autre avec un lit simple de 90 cm. La salle de bain est complète, équipée d'une douche et d'un sèche-cheveux. Le salon-salle à manger est équipé d'une Smart TV de 50" et d'une connexion WiFi avec accès à la terrasse.
+
+La cuisine est indépendante et entièrement équipée avec tout le nécessaire : plaques vitrocéramiques, micro-ondes, réfrigérateur, congélateur, lave-linge, cafetière italienne, cafetière Senseo, ainsi que des ustensiles de cuisine, de la vaisselle et des couverts.
+
+Depuis le salon, on accède à une terrasse privée, l'un des principaux atouts de l'appartement, équipée d'un barbecue et de mobilier d'extérieur. L'appartement dispose de la climatisation réversible, du chauffage par radiateurs et de moustiquaires aux fenêtres, garantissant un confort maximal tout au long de l'année.`,
+      features: {
+        bedrooms: '2 chambres accueillantes et lumineuses',
+        bed1: 'Lit double 135x190 cm',
+        bed2: 'Lit simple 90 cm',
+        bathroom: 'Salle de bain complète avec douche',
+        kitchen: 'Cuisine indépendante et équipée',
+        living: 'Salon-salle à manger avec Smart TV 50" et WiFi',
+        terrace: 'Terrasse privée avec barbecue et mobilier d\'extérieur',
+        climate: 'Climatisation réversible et chauffage par radiateurs',
+        extras: 'Moustiquaires aux fenêtres',
+      },
+      services: {
+        maxGuests: 'Max. 3 personnes',
+        floor: 'Premier étage',
+        wifi: 'Wi-Fi indépendant et gratuit',
+        parking: 'Stationnement gratuit dans la rue à côté de l\'appartement',
+        noSmoking: 'Interdit de fumer dans le logement',
+        noPets: 'Animaux non acceptés',
+        livingRoom: 'Smart TV 50", climatisation',
+        bedroom: '1 chambre avec lit double 135 cm, armoire, fer et table à repasser',
+        extra: 'Coffre-fort gratuit, trousse de secours, lit bébé de voyage (sur demande)',
+        bathroom: '1 salle de bain, douche, shampooing et gel, papier toilette, sèche-cheveux',
+        kitchenList:
+          'Cuisine entièrement équipée, plaques vitrocéramiques, micro-ondes, cafetière Senseo, cafetière italienne, presse-agrumes, mixeur, réfrigérateur, congélateur, lave-linge, vaisselle, couverts, verres.',
+      },
+      areaInfo: `L'appartement se trouve dans un excellent emplacement au centre de Miami Platja, à côté de la Plaça Tarragona. À pied : supermarchés, pharmacies, bars, restaurants et commerces à environ 200 m. La plage à 4 minutes à pied (200 m). L'emplacement rend la voiture inutile pendant le séjour.`,
+      maxGuests: 3,
+      floor: 1,
+      checkIn: 'À partir de 16h00',
+      checkOut: 'Jusqu\'à 11h00',
+      license: 'HUTT-008111',
+      vuc: 'ESFCTU00004303200026525200000000000000000',
+    },
+    paradise: {
+      name: 'Maison Paradise',
+      subtitle: 'B&P Hébergements Miami Platja – Paradise',
+      shortDescription:
+        'Maison de deux étages avec jardin privé, jacuzzi et accès à la piscine communautaire (partagée avec 4 logements), dans un quartier calme de Miami Platja.',
+      description: `La maison B&P Hébergements Miami Platja Paradise est une habitation de deux étages conçue pour offrir confort et intimité.
+
+Au rez-de-chaussée : cuisine entièrement équipée, toilettes, salle à manger et espace bien-être avec jacuzzi chauffé, ainsi que le jardin privé avec barbecue. Depuis le jardin, on accède directement à la piscine communautaire, partagée avec seulement quatre autres logements.
+
+À l'étage supérieur : deux chambres accueillantes et lumineuses et une salle de bain complète avec douche, ainsi qu'une terrasse. Chambre 1 : lit double de 150 cm. Chambre 2 : deux lits simples de 90 cm.
+
+Le salon-salle à manger dispose d'une Smart TV de 50" et d'une connexion WiFi. La cuisine est entièrement équipée avec électroménager et ustensiles, dont four et lave-vaisselle. Climatisation et chauffage. Parking privé gratuit dans la propriété.`,
+      features: {
+        floors: 'Habitation de 2 étages',
+        bedrooms: '2 chambres lumineuses et confortables',
+        bed1: 'Lit double 150 cm',
+        bed2: '2 lits simples 90 cm',
+        bathroom: '1 salle de bain complète avec douche (étage supérieur)',
+        toilet: '1 toilettes (rez-de-chaussée)',
+        kitchen: 'Cuisine entièrement équipée avec four et lave-vaisselle',
+        living: 'Salon-salle à manger spacieux avec Smart TV 50" et WiFi',
+        garden: 'Jardin privé avec barbecue',
+        jacuzzi: 'Jacuzzi chauffé',
+        pool: 'Accès direct à la piscine communautaire (partagée avec 4 maisons)',
+        parking: 'Parking privé gratuit dans la propriété',
+      },
+      services: {
+        maxGuests: 'Max. 4 personnes',
+        wifi: 'Wi-Fi gratuit',
+        noSmoking: 'Interdit de fumer dans le logement',
+        noPets: 'Animaux non acceptés',
+      },
+      areaInfo: `La maison se trouve dans un quartier calme de Miami Platja. Supermarché à 9 min à pied (600 m). Bar, plats à emporter et restaurant à proximité. Plage à environ 20 min à pied. Idéal pour des vacances détente sur la Costa Dorada.`,
+      maxGuests: 4,
+      floors: 2,
+      checkIn: 'À partir de 16h00',
+      checkOut: 'Jusqu\'à 11h00',
+      license: 'HUTT-061296',
+      vuc: 'ESFCTU00004303200013226400000000000000000',
+    },
+    booking: {
+      checkInTitle: 'Heure d\'arrivée (Check-in)',
+      checkOutTitle: 'Heure de départ (Check-out)',
+      checkInTime: 'À partir de 16h00.',
+      checkOutTime: 'Jusqu\'à 11h00.',
+      checkInNote:
+        'Pour les demandes spéciales, vérifiez la disponibilité via la section contact ou dans les commentaires lors de la réservation.',
+      reservationTitle: 'Effectuer une réservation',
+      reservationSteps: `Sélectionnez les dates souhaitées ; le système affichera la disponibilité. Indiquez le nombre d'adultes et d'enfants, vérifiez le montant et continuez avec "Réserver". Complétez les champs et confirmez avec "Confirmer la réservation". Vous recevrez un e-mail de confirmation.`,
+      cancellationTitle: 'Annulations',
+      cancellationText: 'Les conditions d\'annulation sont indiquées au moment de la réservation et dans l\'e-mail de confirmation.',
+      depositTitle: 'Caution',
+      depositText:
+        'Aucune caution préalable n\'est requise. En garantie du bon usage, à la fin du séjour le logement sera inspecté et un prélèvement pour dommages pourra être effectué sur la carte associée à la réservation.',
+      checkInProcessTitle: 'Arrivée (Check-in)',
+      checkInProcessText: `Quelques jours avant l'arrivée, notre service de check-in vous contactera par téléphone pour faciliter l'accès et indiquer la zone de stationnement. Vous recevrez un e-mail pour le check-in en ligne et devrez saisir les données de tous les hôtes adultes (enregistrement obligatoire).`,
+      checkOutProcessTitle: 'Départ (Check-out)',
+      checkOutProcessText:
+        'L\'heure maximale de départ est 11h00. Après le séjour, le logement sera inspecté et un prélèvement pour dommages ou objets manquants pourra être effectué sur la carte.',
+      rulesTitle: 'Règles et restrictions',
+      rules: [
+        'Les enfants de tout âge sont les bienvenus.',
+        'Il est interdit de fumer dans tout le logement.',
+        'Les animaux ne sont pas acceptés.',
+        'Les fêtes, enterrements de vie de garçon/jeune fille ou événements similaires ne sont pas autorisés.',
+        'Il est obligatoire de respecter l\'appartement, le mobilier et les installations.',
+        'Il n\'est pas permis d\'héberger plus de personnes que celles indiquées dans la réservation.',
+        'Nous ne sommes pas responsables du vol ou de la perte d\'objets personnels. Ne laissez pas d\'objets de valeur visibles.',
+        'L\'utilisation du Wi-Fi est sous la responsabilité exclusive du client.',
+      ],
+      licenseNote:
+        'Hébergement inscrit au Registre du Tourisme de Catalogne, conformément à la réglementation sur les logements à usage touristique.',
     },
   },
 } as const satisfies Record<Locale, Record<string, unknown>>;
