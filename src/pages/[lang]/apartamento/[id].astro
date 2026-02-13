@@ -1,10 +1,11 @@
 ---
+import { getImage } from 'astro:assets';
 import Layout from '../../../layouts/Layout.astro';
 import ApartmentGallery from '../../../components/ApartmentGallery.vue';
 import { DEFAULT_LOCALE, LOCALES, type Locale } from '../../../i18n/config';
 import { apartamentos, APARTMENT_IDS, type ApartmentId, contact, bookingUrls } from '../../../i18n/apartamentos';
 import { t } from '../../../i18n/strings';
-import { blueImages, paradiseImages } from '../../../lib/apartment-images';
+import { blueRawImages, paradiseRawImages } from '../../../lib/apartment-images';
 
 function isApartmentId(id: string): id is ApartmentId {
   return APARTMENT_IDS.includes(id as ApartmentId);
@@ -30,7 +31,16 @@ if (!isApartmentId(id)) {
 const apt = apartamentos[lang][id] as typeof apartamentos.es.blue;
 const booking = apartamentos[lang].booking;
 
-const apartmentImages: string[] = id === 'blue' ? blueImages : paradiseImages;
+const rawImages = id === 'blue' ? blueRawImages : paradiseRawImages;
+
+// Optimize images at build time: full-size (WebP, 1280px) + thumbnails (WebP, 200px)
+const [optimizedImages, optimizedThumbs] = await Promise.all([
+  Promise.all(rawImages.map((img) => getImage({ src: img, format: 'webp', width: 1280 }))),
+  Promise.all(rawImages.map((img) => getImage({ src: img, format: 'webp', width: 200 }))),
+]);
+const apartmentImages: string[] = optimizedImages.map((img) => img.src);
+const apartmentThumbs: string[] = optimizedThumbs.map((img) => img.src);
+
 const bookingUrl = bookingUrls[id];
 ---
 
@@ -76,7 +86,7 @@ const bookingUrl = bookingUrls[id];
     <section class="mb-12 grid gap-6 lg:grid-cols-5">
       <!-- Gallery: 3 of 5 columns on lg -->
       <div class="lg:col-span-3 rounded-xl border border-ocean-100 overflow-hidden shadow-lg bg-white p-2 sm:p-3 ">
-        <ApartmentGallery client:load images={apartmentImages} />
+        <ApartmentGallery client:load images={apartmentImages} thumbnails={apartmentThumbs} />
       </div>
 
       <!-- Description sidebar: 2 of 5 columns on lg -->

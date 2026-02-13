@@ -5,9 +5,11 @@ import Galleria from 'primevue/galleria';
 const props = withDefaults(
   defineProps<{
     images?: string[];
+    thumbnails?: string[];
   }>(),
   {
     images: () => [],
+    thumbnails: () => [],
   }
 );
 
@@ -23,7 +25,11 @@ const responsiveOptions = ref([
 const activeIndex = ref(0);
 
 const images = computed(() => {
-  return props.images.map((src, index) => ({ src, index }));
+  return props.images.map((src, index) => ({
+    src,
+    thumb: props.thumbnails[index] ?? src,
+    index,
+  }));
 });
 </script>
 
@@ -54,10 +60,9 @@ const images = computed(() => {
       </div>
     </template>
     <template #thumbnail="{ item }">
-      <div v-if="item?.src" class="w-[60px] h-[42px] overflow-hidden rounded">
+      <div v-if="item?.thumb" class="w-[60px] h-[42px] overflow-hidden rounded">
         <img
-          v-if="item?.src"
-          :src="item.src"
+          :src="item.thumb"
           :alt="item.alt ?? 'Alojamiento'"
           loading="lazy"
           decoding="async"

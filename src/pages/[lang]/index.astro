@@ -1,9 +1,11 @@
 ---
+import { getImage } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import { DEFAULT_LOCALE, LOCALES, type Locale } from '../../i18n/config';
 import { t } from '../../i18n/strings';
 import { apartamentos, contact } from '../../i18n/apartamentos';
-import { blueImages, paradiseImages } from '../../lib/apartment-images';
+import { blueRawImages, paradiseRawImages } from '../../lib/apartment-images';
+import heroBeachRaw from '../../assets/cala-las-sirenas-miami-playa-tarragona.webp';
 
 export const getStaticPaths = () =>
 	LOCALES.map((lang) => ({ params: { lang } }));
@@ -13,9 +15,14 @@ const welcome = apartamentos[lang].welcome;
 const blue = apartamentos[lang].blue;
 const paradise = apartamentos[lang].paradise;
 
+// Optimize images at build time
+const heroBeach = await getImage({ src: heroBeachRaw, format: 'webp', width: 1920 });
+const blueThumb = await getImage({ src: blueRawImages[0], format: 'webp', width: 800 });
+const paradiseThumb = await getImage({ src: paradiseRawImages[0], format: 'webp', width: 800 });
+
 const apartments = [
-	{ id: 'blue', data: blue, image: blueImages[0] },
-	{ id: 'paradise', data: paradise, image: paradiseImages[0] },
+	{ id: 'blue', data: blue, image: blueThumb.src },
+	{ id: 'paradise', data: paradise, image: paradiseThumb.src },
 ];
 
 const accommodationTitle = t(lang, 'nav', 'ourAccommodation');
@@ -26,7 +33,7 @@ const viewMore = t(lang, 'nav', 'viewMore');
 	<div class="relative text-white overflow-hidden">
 		<!-- Background image -->
 		<img
-			src="/hero-beach.webp"
+			src={heroBeach.src}
 			alt=""
 			class="absolute inset-0 w-full h-full object-cover object-center"
 			loading="eager"
