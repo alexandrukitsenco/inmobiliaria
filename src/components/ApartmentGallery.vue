@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import Galleria from 'primevue/galleria';
+import Image from 'primevue/image';
 
 const props = withDefaults(
   defineProps<{
@@ -47,15 +48,17 @@ const images = computed(() => {
     <template #item="{ item }">
       <div
         v-if="item?.src"
-        class="relative w-full aspect-video overflow-hidden rounded-lg bg-ocean-50 flex items-center justify-center"
+        class="relative w-full aspect-video overflow-hidden rounded-lg bg-ocean-50 flex items-center justify-center cursor-pointer"
       >
-        <img
+        <Image
           :src="item.src"
           :alt="item.alt ?? 'Alojamiento'"
-          :loading="item.index === 0 ? 'eager' : 'lazy'"
-          :fetchpriority="item.index === 0 ? 'high' : 'auto'"
-          decoding="async"
-          class="max-w-full max-h-full w-auto h-auto object-contain object-center"
+          preview
+          image-class="max-w-full max-h-full w-auto h-auto object-contain object-center"
+          :pt="{
+            root: { class: 'w-full h-full flex items-center justify-center' },
+            originalContainer: { class: 'w-full h-full flex items-center justify-center' },
+          }"
         />
       </div>
     </template>
