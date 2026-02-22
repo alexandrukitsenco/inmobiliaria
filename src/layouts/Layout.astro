@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
+import CookiesMessage from '../components/CockiesMessage.vue';
+import WhatsappButton from '../components/WhatsappButton.vue';
 import type { Locale } from '../i18n/config';
 
 interface Props {
@@ -34,6 +36,8 @@ const locale = lang as Locale;
 		<main transition:name="main" transition:animate="fade">
 			<slot />
 		</main>
+		<WhatsappButton client:load transition:persist />
+		<CookiesMessage client:load lang={lang} transition:persist />
 	</body>
 </html>
 

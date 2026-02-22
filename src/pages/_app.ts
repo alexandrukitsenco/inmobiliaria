@@ -2,6 +2,8 @@ import type { App } from 'vue';
 import PrimeVue from 'primevue/config';
 import { definePreset } from '@primeuix/themes';
 import Aura from '@primeuix/themes/aura';
+import ToastService from 'primevue/toastservice';
+import 'primeicons/primeicons.css';
 import '../styles/global.css';
 
 const OceanPreset = definePreset(Aura, {
@@ -47,4 +49,5 @@ export default (app: App) => {
       },
     },
   });
+  app.use(ToastService);
 };
