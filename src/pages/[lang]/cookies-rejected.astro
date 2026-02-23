@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AcceptCookiesButton from '../../components/AcceptCookiesButton.vue';
 import { DEFAULT_LOCALE, LOCALES, type Locale } from '../../i18n/config';
 import { t } from '../../i18n/strings';
 
@@ -14,13 +15,7 @@ const lang = (Astro.params?.lang as Locale) ?? DEFAULT_LOCALE;
 			<div class="text-6xl mb-6">&#x1F36A;</div>
 			<h1 class="text-2xl md:text-3xl font-bold text-ocean-800 mb-4">{t(lang, 'cookies', 'rejectedTitle')}</h1>
 			<p class="text-gray-600 leading-relaxed mb-8">{t(lang, 'cookies', 'rejectedMessage')}</p>
-			<button
-				id="accept-cookies-btn"
-				class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ocean-600 text-white hover:bg-ocean-700 transition-colors font-medium cursor-pointer text-sm"
-			>
-				<span>&#x2714;</span>
-				{t(lang, 'cookies', 'rejectedAccept')}
-			</button>
+			<AcceptCookiesButton client:load lang={lang} />
 			<div class="mt-6">
 				<a
 					href={`/${lang}/cookies`}
@@ -29,11 +24,4 @@ const lang = (Astro.params?.lang as Locale) ?? DEFAULT_LOCALE;
 			</div>
 		</div>
 	</div>
-
-	<script is:inline define:vars={{ lang }}>
-		document.getElementById('accept-cookies-btn')?.addEventListener('click', () => {
-			document.cookie = `bp_cookies_consent=${encodeURIComponent('accepted')}; path=/; max-age=${365 * 24 * 60 * 60}; SameSite=Lax`;
-			window.location.href = `/${lang}/`;
-		});
-	</script>
 </Layout>

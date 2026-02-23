@@ -36,8 +36,8 @@ const locale = lang as Locale;
 		<main transition:name="main" transition:animate="fade">
 			<slot />
 		</main>
-		<WhatsappButton client:load transition:persist />
-		<CookiesMessage client:load lang={lang} transition:persist />
+		<WhatsappButton client:load />
+		<CookiesMessage client:load lang={lang} />
 	</body>
 </html>
 

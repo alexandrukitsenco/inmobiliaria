@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { navigate } from 'astro:transitions/client';
+import Button from 'primevue/button';
 import type { Locale } from '../i18n/config';
 import { strings } from '../i18n/strings';
 
@@ -40,13 +41,14 @@ onMounted(() => {
   const consent = getCookie(COOKIE_NAME);
   if (consent === 'accepted') return;
 
-  const onRejectedPage = window.location.pathname.includes('cookies-rejected');
-  if (consent === 'rejected' && !onRejectedPage) {
+  const path = window.location.pathname;
+  const onAllowedPage = path.includes('cookies-rejected') || path.endsWith('/cookies') || path.endsWith('/cookies/');
+  if (consent === 'rejected' && !onAllowedPage) {
     navigate(`/${props.lang}/cookies-rejected`);
     return;
   }
 
-  if (!consent) {
+  if (!consent && !onAllowedPage) {
     visible.value = true;
   }
 });
@@ -64,18 +66,8 @@ onMounted(() => {
           >{{ t.moreInfo }}</a>
         </p>
         <div class="flex items-center gap-2 shrink-0 self-end sm:self-auto">
-          <button
-            class="px-5 py-2 text-sm rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer"
-            @click="reject"
-          >
-            {{ t.reject }}
-          </button>
-          <button
-            class="px-5 py-2 text-sm rounded-lg bg-ocean-600 text-white hover:bg-ocean-700 transition-colors font-medium cursor-pointer"
-            @click="accept"
-          >
-            {{ t.accept }}
-          </button>
+          <Button :label="t.reject" severity="secondary" outlined size="small" @click="reject" />
+          <Button :label="t.accept" size="small" @click="accept" />
         </div>
       </div>
     </div>
