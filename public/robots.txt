@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /*/cookies-rejected
+
+Sitemap: https://www.bpmiamiplaya.es/sitemap-index.xml

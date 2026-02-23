@@ -42,9 +42,41 @@ const apartmentImages: string[] = optimizedImages.map((img) => img.src);
 const apartmentThumbs: string[] = optimizedThumbs.map((img) => img.src);
 
 const bookingUrl = bookingUrls[id];
+
+const siteUrl = 'https://www.bpmiamiplaya.es';
+
+const accommodationJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'VacationRental',
+	name: apt.name,
+	description: apt.shortDescription,
+	url: `${siteUrl}/${lang}/apartamento/${id}`,
+	image: apartmentImages.map((img: string) => new URL(img, siteUrl).href),
+	numberOfRooms: Object.keys(apt.features).filter(k => k.startsWith('bed')).length,
+	occupancy: {
+		'@type': 'QuantitativeValue',
+		maxValue: apt.maxGuests,
+	},
+	checkinTime: apt.checkIn,
+	checkoutTime: apt.checkOut,
+	identifier: apt.license,
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Miami Platja',
+		addressRegion: 'Tarragona',
+		addressCountry: 'ES',
+	},
+};
 ---
 
-<Layout lang={lang} title={apt.name} preloadImage={apartmentImages[0]}>
+<Layout
+	lang={lang}
+	title={`${apt.name} | B&P Miami Playa`}
+	description={apt.shortDescription}
+	image={apartmentImages[0]}
+	preloadImage={apartmentImages[0]}
+	jsonLd={accommodationJsonLd}
+>
   <!-- Hero with apartment photo -->
   <div class="relative text-white overflow-hidden">
     <!-- Background image (first apartment photo) -->

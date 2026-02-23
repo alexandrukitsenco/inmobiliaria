@@ -30,8 +30,39 @@ const viewMore = t(lang, 'nav', 'viewMore');
 
 const phoneClean = contact.phone.replace(/\s+/g, '');
 const whatsappUrl = `https://wa.me/${phoneClean}`;
+
+const siteUrl = 'https://www.bpmiamiplaya.es';
+
+const localBusinessJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'LodgingBusiness',
+	name: 'B&P Alojamientos Miami Playa',
+	description: welcome.intro,
+	url: siteUrl,
+	telephone: contact.phone,
+	email: contact.email,
+	image: `${siteUrl}/logo.png`,
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Miami Platja',
+		addressRegion: 'Tarragona',
+		addressCountry: 'ES',
+	},
+	geo: {
+		'@type': 'GeoCoordinates',
+		latitude: 41.0643,
+		longitude: 1.0192,
+	},
+	sameAs: [contact.instagram],
+};
 ---
-<Layout lang={lang} title={welcome.title}>
+<Layout
+	lang={lang}
+	title={welcome.title}
+	description={welcome.intro}
+	image={heroBeach.src}
+	jsonLd={localBusinessJsonLd}
+>
 	<!-- Hero with beach photo -->
 	<div class="relative text-white overflow-hidden">
 		<!-- Background image -->

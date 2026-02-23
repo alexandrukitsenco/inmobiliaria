@@ -9,7 +9,7 @@ export const getStaticPaths = () =>
 
 const lang = (Astro.params?.lang as Locale) ?? DEFAULT_LOCALE;
 ---
-<Layout lang={lang} title={t(lang, 'cookies', 'rejectedTitle')}>
+<Layout lang={lang} title={t(lang, 'cookies', 'rejectedTitle')} description={t(lang, 'cookies', 'rejectedMessage')} noindex>
 	<div class="min-h-[60vh] flex items-center justify-center px-4">
 		<div class="text-center max-w-md">
 			<div class="text-6xl mb-6">&#x1F36A;</div>

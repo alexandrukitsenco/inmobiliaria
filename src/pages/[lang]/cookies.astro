@@ -8,7 +8,7 @@ export const getStaticPaths = () =>
 
 const lang = (Astro.params?.lang as Locale) ?? DEFAULT_LOCALE;
 ---
-<Layout lang={lang} title={t(lang, 'cookies', 'pageTitle')}>
+<Layout lang={lang} title={t(lang, 'cookies', 'pageTitle')} description={t(lang, 'cookies', 'intro')}>
 	<div class="container mx-auto px-4 py-12">
 		<a
 			href={`/${lang}/`}
