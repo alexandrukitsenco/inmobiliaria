@@ -42,7 +42,7 @@ onMounted(() => {
   if (consent === 'accepted') return;
 
   const path = window.location.pathname;
-  const onAllowedPage = path.includes('cookies-rejected') || path.endsWith('/cookies') || path.endsWith('/cookies/');
+  const onAllowedPage = path.includes('cookies-rejected') || path.endsWith('/cookies') || path.endsWith('/cookies/') || path.endsWith('/privacidad') || path.endsWith('/privacidad/');
   if (consent === 'rejected' && !onAllowedPage) {
     navigate(`/${props.lang}/cookies-rejected`);
     return;

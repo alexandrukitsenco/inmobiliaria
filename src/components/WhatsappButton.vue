@@ -9,7 +9,7 @@ const visible = ref(false);
 
 onMounted(() => {
   const path = window.location.pathname;
-  const isCookiesPage = path.includes('cookies-rejected') || path.endsWith('/cookies') || path.endsWith('/cookies/');
+  const isCookiesPage = path.includes('cookies-rejected') || path.endsWith('/cookies') || path.endsWith('/cookies/') || path.endsWith('/privacidad') || path.endsWith('/privacidad/');
   visible.value = !isCookiesPage;
 });
 </script>

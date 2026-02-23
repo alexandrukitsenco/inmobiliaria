@@ -1,0 +1,78 @@
+---
+import type { Locale } from '../i18n/config';
+import { contact } from '../i18n/apartamentos';
+import { t } from '../i18n/strings';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-ocean-900 text-white mt-16">
+  <div class="container mx-auto px-6 py-12">
+    <div class="grid gap-10 md:grid-cols-3">
+
+      <!-- Brand & contact -->
+      <div>
+        <a href={`/${lang}/`} class="flex items-center gap-2 no-underline mb-4">
+          <img src="/logo.png" alt="B&P Miami Playa" class="h-10 w-auto brightness-0 invert" />
+          <span class="font-heading font-bold text-lg tracking-tight text-white">B&P Miami Playa</span>
+        </a>
+        <p class="text-ocean-300 text-sm mb-4">{t(lang, 'footer', 'touristRental')}</p>
+        <div class="space-y-2 text-sm text-ocean-200">
+          <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="flex items-center gap-2 no-underline text-ocean-200 hover:text-white transition-colors">
+            <i class="pi pi-phone text-xs"></i>
+            {contact.phone}
+          </a>
+          <a href={`mailto:${contact.email}`} class="flex items-center gap-2 no-underline text-ocean-200 hover:text-white transition-colors">
+            <i class="pi pi-envelope text-xs"></i>
+            {contact.email}
+          </a>
+        </div>
+      </div>
+
+      <!-- Legal links -->
+      <div>
+        <h3 class="font-semibold text-sm uppercase tracking-wider text-ocean-400 mb-4">{t(lang, 'footer', 'legal')}</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href={`/${lang}/cookies`} class="text-ocean-200 hover:text-white transition-colors no-underline">
+              {t(lang, 'footer', 'cookiesPolicy')}
+            </a>
+          </li>
+          <li>
+            <a href={`/${lang}/privacidad`} class="text-ocean-200 hover:text-white transition-colors no-underline">
+              {t(lang, 'footer', 'privacyPolicy')}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h3 class="font-semibold text-sm uppercase tracking-wider text-ocean-400 mb-4">{t(lang, 'footer', 'followUs')}</h3>
+        <div class="flex items-center gap-3">
+          <a
+            href={contact.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="flex items-center justify-center w-10 h-10 rounded-full bg-ocean-800 hover:bg-ocean-700 text-ocean-200 hover:text-white transition-colors no-underline"
+          >
+            <i class="pi pi-instagram text-lg"></i>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-ocean-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-ocean-400">
+      <p>&copy; {year} {contact.name}. {t(lang, 'footer', 'allRightsReserved')}</p>
+    </div>
+  </div>
+</footer>

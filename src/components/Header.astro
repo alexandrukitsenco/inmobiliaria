@@ -20,9 +20,12 @@ const apartmentLinks = [
   { name: paradise.name, href: `/${lang}/apartamento/paradise` },
 ];
 
+const contactLabel = t(lang, 'contact', 'title');
+
 const menuLabels = {
   home: t(lang, 'nav', 'home'),
   apartments: t(lang, 'nav', 'apartments'),
+  contact: contactLabel,
   language: t(lang, 'nav', 'language'),
   menu: t(lang, 'nav', 'menu'),
 };
@@ -39,17 +42,17 @@ const isHome = isActive(`/${lang}`);
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-ocean-100">
   <div class="container mx-auto px-4 flex items-center justify-between py-3">
-    <!-- Logo -->
+    <!-- Logo (left) -->
     <a href={`/${lang}/`} class:list={[
-      "flex items-center gap-2 no-underline transition-colors",
+      "flex items-center gap-2 no-underline transition-colors shrink-0",
       isHome ? "text-ocean-600" : "text-ocean-800 hover:text-ocean-600"
     ]}>
       <img src="/logo.png" alt="B&P Miami Playa" class="h-9 w-auto" />
       <span class="font-heading font-bold text-lg tracking-tight">B&P Miami Playa</span>
     </a>
 
-    <!-- Desktop nav (hidden on mobile) -->
-    <nav class="hidden md:flex items-center gap-6">
+    <!-- Apartments (center) -->
+    <nav class="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
       {apartmentLinks.map((apt) => (
         <a
           href={apt.href}
@@ -63,8 +66,20 @@ const isHome = isActive(`/${lang}`);
           {apt.name}
         </a>
       ))}
-      <LangSelector client:load currentLang={lang} pathname={pathname} />
     </nav>
+
+    <!-- Contact + Language (right) -->
+    <div class="hidden md:flex items-center gap-4 shrink-0">
+      <a
+        id="nav-contact"
+        href={`/${lang}/#contacto`}
+        class="text-sm font-medium no-underline transition-colors relative pb-1 text-gray-600 hover:text-ocean-600"
+      >
+        {contactLabel}
+      </a>
+      <span class="w-px h-4 bg-ocean-200"></span>
+      <LangSelector client:load currentLang={lang} pathname={pathname} />
+    </div>
 
     <!-- Mobile menu (hidden on desktop) -->
     <MobileMenu
@@ -76,3 +91,28 @@ const isHome = isActive(`/${lang}`);
     />
   </div>
 </header>
+
+<script>
+function setupContactObserver() {
+  const link = document.getElementById('nav-contact');
+  const section = document.getElementById('contacto');
+  if (!link || !section) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        link.classList.add('text-ocean-600', 'border-b-2', 'border-ocean-500');
+        link.classList.remove('text-gray-600');
+      } else {
+        link.classList.remove('text-ocean-600', 'border-b-2', 'border-ocean-500');
+        link.classList.add('text-gray-600');
+      }
+    },
+    { threshold: 0.3 }
+  );
+  observer.observe(section);
+}
+
+setupContactObserver();
+document.addEventListener('astro:after-swap', setupContactObserver);
+</script>

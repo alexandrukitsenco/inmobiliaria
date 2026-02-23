@@ -11,6 +11,7 @@ const props = defineProps<{
   labels: {
     home: string;
     apartments: string;
+    contact: string;
     language: string;
     menu: string;
   };
@@ -34,6 +35,7 @@ function getLocalePath(locale: Locale): string {
 
 function switchLang(locale: Locale) {
   visible.value = false;
+  document.cookie = `bp_lang=${locale}; path=/; max-age=${365 * 24 * 60 * 60}; SameSite=Lax`;
   navigate(getLocalePath(locale));
 }
 
@@ -94,6 +96,21 @@ const isHome = isActive(`/${props.lang}`);
         </svg>
         <span>{{ apt.name }}</span>
       </button>
+
+      <!-- Separator -->
+      <div class="my-2 border-t border-ocean-100"></div>
+
+      <!-- Contact -->
+      <button
+        class="flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors w-full text-gray-700 hover:bg-ocean-50 hover:text-ocean-700"
+        @click="goTo(`/${lang}/#contacto`)"
+      >
+        <i class="pi pi-phone text-ocean-400 w-5 text-center"></i>
+        <span>{{ labels.contact }}</span>
+      </button>
+
+      <!-- Separator -->
+      <div class="my-2 border-t border-ocean-100"></div>
 
       <!-- Language section -->
       <div class="px-4 pt-4 pb-1">

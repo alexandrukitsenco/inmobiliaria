@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { DEFAULT_LOCALE, LOCALES, type Locale } from '../../i18n/config';
+import { t } from '../../i18n/strings';
+import { contact } from '../../i18n/apartamentos';
+
+export const getStaticPaths = () =>
+	LOCALES.map((lang) => ({ params: { lang } }));
+
+const lang = (Astro.params?.lang as Locale) ?? DEFAULT_LOCALE;
+---
+<Layout lang={lang} title={t(lang, 'privacy', 'pageTitle')}>
+	<div class="container mx-auto px-4 py-12">
+		<a
+			href={`/${lang}/`}
+			class="inline-flex items-center gap-1 text-sm text-ocean-500 hover:text-ocean-700 transition-colors mb-8 no-underline"
+		>
+			<span>&larr;</span>
+			<span>{t(lang, 'nav', 'home')}</span>
+		</a>
+
+		<h1 class="text-3xl md:text-4xl font-bold text-ocean-800 mb-4">{t(lang, 'privacy', 'pageTitle')}</h1>
+		<p class="text-gray-600 leading-relaxed mb-10 text-lg">{t(lang, 'privacy', 'intro')}</p>
+
+		<section class="mb-8">
+			<h2 class="text-xl font-bold text-ocean-700 mb-3 flex items-center gap-2">
+				<span class="text-ocean-400">&#x1F464;</span>
+				{t(lang, 'privacy', 'responsibleTitle')}
+			</h2>
+			<p class="text-gray-600 leading-relaxed">{t(lang, 'privacy', 'responsibleText')}</p>
+			<div class="mt-3 text-sm text-gray-500 space-y-1">
+				<p>{contact.name}</p>
+				<p>{contact.email}</p>
+				<p>{contact.phone}</p>
+			</div>
+		</section>
+
+		<section class="mb-8">
+			<h2 class="text-xl font-bold text-ocean-700 mb-3 flex items-center gap-2">
+				<span class="text-ocean-400">&#x1F4CB;</span>
+				{t(lang, 'privacy', 'dataTitle')}
+			</h2>
+			<p class="text-gray-600 leading-relaxed">{t(lang, 'privacy', 'dataText')}</p>
+		</section>
+
+		<section class="mb-8">
+			<h2 class="text-xl font-bold text-ocean-700 mb-3 flex items-center gap-2">
+				<span class="text-ocean-400">&#x1F3AF;</span>
+				{t(lang, 'privacy', 'purposeTitle')}
+			</h2>
+			<p class="text-gray-600 leading-relaxed">{t(lang, 'privacy', 'purposeText')}</p>
+		</section>
+
+		<section class="mb-8">
+			<h2 class="text-xl font-bold text-ocean-700 mb-3 flex items-center gap-2">
+				<span class="text-ocean-400">&#x1F91D;</span>
+				{t(lang, 'privacy', 'sharingTitle')}
+			</h2>
+			<p class="text-gray-600 leading-relaxed">{t(lang, 'privacy', 'sharingText')}</p>
+		</section>
+
+		<section class="mb-8">
+			<h2 class="text-xl font-bold text-ocean-700 mb-3 flex items-center gap-2">
+				<span class="text-ocean-400">&#x2696;</span>
+				{t(lang, 'privacy', 'rightsTitle')}
+			</h2>
+			<p class="text-gray-600 leading-relaxed">{t(lang, 'privacy', 'rightsText')}</p>
+		</section>
+
+		<section class="mb-8">
+			<h2 class="text-xl font-bold text-ocean-700 mb-3 flex items-center gap-2">
+				<span class="text-ocean-400">&#x1F4C5;</span>
+				{t(lang, 'privacy', 'retentionTitle')}
+			</h2>
+			<p class="text-gray-600 leading-relaxed">{t(lang, 'privacy', 'retentionText')}</p>
+		</section>
+
+		<section class="mb-8">
+			<h2 class="text-xl font-bold text-ocean-700 mb-3 flex items-center gap-2">
+				<span class="text-ocean-400">&#x1F512;</span>
+				{t(lang, 'privacy', 'securityTitle')}
+			</h2>
+			<p class="text-gray-600 leading-relaxed">{t(lang, 'privacy', 'securityText')}</p>
+		</section>
+
+		<section class="mb-12">
+			<h2 class="text-xl font-bold text-ocean-700 mb-3 flex items-center gap-2">
+				<span class="text-ocean-400">&#x2709;</span>
+				{t(lang, 'privacy', 'contactTitle')}
+			</h2>
+			<p class="text-gray-600 leading-relaxed">{t(lang, 'privacy', 'contactText')}</p>
+		</section>
+	</div>
+</Layout>

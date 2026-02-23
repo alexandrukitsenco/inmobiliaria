@@ -37,6 +37,7 @@ function getLocalePath(locale: Locale): string {
 
 function onLocaleChange(value: Locale | null) {
   if (value == null) return;
+  document.cookie = `bp_lang=${value}; path=/; max-age=${365 * 24 * 60 * 60}; SameSite=Lax`;
   const path = getLocalePath(value);
   navigate(path);
 }

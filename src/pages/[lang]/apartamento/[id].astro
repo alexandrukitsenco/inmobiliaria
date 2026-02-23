@@ -3,7 +3,7 @@ import { getImage } from 'astro:assets';
 import Layout from '../../../layouts/Layout.astro';
 import ApartmentGallery from '../../../components/ApartmentGallery.vue';
 import { DEFAULT_LOCALE, LOCALES, type Locale } from '../../../i18n/config';
-import { apartamentos, APARTMENT_IDS, type ApartmentId, contact, bookingUrls } from '../../../i18n/apartamentos';
+import { apartamentos, APARTMENT_IDS, type ApartmentId, bookingUrls } from '../../../i18n/apartamentos';
 import { t } from '../../../i18n/strings';
 import { blueRawImages, paradiseRawImages } from '../../../lib/apartment-images';
 
@@ -209,14 +209,11 @@ const bookingUrl = bookingUrls[id];
       </ul>
     </section>
 
-    <!-- Footer / license -->
-    <footer class="mb-16 text-center text-sm text-gray-400 border-t border-ocean-100 pt-8">
+    <!-- License note -->
+    <div class="mb-12 text-center text-sm text-gray-400 border-t border-ocean-100 pt-8">
       <p>{booking.licenseNote}</p>
       <p class="mt-1">{t(lang, 'apartment', 'register')}: {apt.license}</p>
-      <p class="mt-4 text-ocean-400">
-        {contact.name} &middot; {contact.phone} &middot; {contact.email}
-      </p>
-    </footer>
+    </div>
   </article>
 
   <!-- Floating book button (top right) -->

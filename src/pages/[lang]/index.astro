@@ -27,6 +27,9 @@ const apartments = [
 
 const accommodationTitle = t(lang, 'nav', 'ourAccommodation');
 const viewMore = t(lang, 'nav', 'viewMore');
+
+const phoneClean = contact.phone.replace(/\s+/g, '');
+const whatsappUrl = `https://wa.me/${phoneClean}`;
 ---
 <Layout lang={lang} title={welcome.title}>
 	<!-- Hero with beach photo -->
@@ -95,10 +98,60 @@ const viewMore = t(lang, 'nav', 'viewMore');
 			</div>
 		</section>
 
-		<!-- Contact -->
-		<footer class="mb-16 text-center text-sm text-gray-400 border-t border-ocean-100 pt-8">
-			<p class="text-ocean-400 font-medium">{contact.name}</p>
-			<p class="mt-1">{contact.phone} &middot; {contact.email}</p>
-		</footer>
+		<!-- Contact section -->
+		<section id="contacto" class="mb-16 scroll-mt-20">
+			<div class="rounded-2xl bg-ocean-900 text-white p-8 md:p-12 relative overflow-hidden">
+				<svg class="absolute -right-12 -top-12 w-48 h-48 text-ocean-800/30" viewBox="0 0 100 100" fill="currentColor">
+					<circle cx="50" cy="50" r="50" />
+				</svg>
+				<svg class="absolute -left-8 -bottom-8 w-32 h-32 text-ocean-800/20" viewBox="0 0 100 100" fill="currentColor">
+					<circle cx="50" cy="50" r="50" />
+				</svg>
+
+				<div class="relative z-10 text-center">
+					<h2 class="text-2xl md:text-3xl font-bold mb-2">{t(lang, 'contact', 'title')}</h2>
+					<p class="text-ocean-200 mb-8 max-w-lg mx-auto">{t(lang, 'contact', 'subtitle')}</p>
+
+					<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+						<a href={`tel:${phoneClean}`} class="flex items-center gap-2 text-lg font-semibold text-white no-underline hover:text-ocean-200 transition-colors">
+							<i class="pi pi-phone"></i>
+							{contact.phone}
+						</a>
+						<span class="hidden sm:inline text-ocean-600">&middot;</span>
+						<a href={`mailto:${contact.email}`} class="flex items-center gap-2 text-lg font-semibold text-white no-underline hover:text-ocean-200 transition-colors">
+							<i class="pi pi-envelope"></i>
+							{contact.email}
+						</a>
+					</div>
+
+					<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+						<a
+							href={`tel:${phoneClean}`}
+							class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-ocean-800 font-semibold text-sm hover:bg-ocean-50 transition-colors no-underline w-full sm:w-auto justify-center"
+						>
+							<i class="pi pi-phone"></i>
+							{t(lang, 'contact', 'callUs')}
+						</a>
+						<a
+							href={`mailto:${contact.email}`}
+							class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ocean-700 text-white font-semibold text-sm hover:bg-ocean-600 transition-colors no-underline border border-ocean-500 w-full sm:w-auto justify-center"
+						>
+							<i class="pi pi-envelope"></i>
+							{t(lang, 'contact', 'emailUs')}
+						</a>
+						<a
+							href={whatsappUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#25D366] text-white font-semibold text-sm hover:bg-[#1ebe5b] transition-colors no-underline w-full sm:w-auto justify-center"
+						>
+							<i class="pi pi-whatsapp"></i>
+							{t(lang, 'contact', 'whatsapp')}
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
 	</div>
 </Layout>

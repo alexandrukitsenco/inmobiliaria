@@ -12,6 +12,7 @@ export const contact = {
   email: 'info@bpmiamiplaya.es',
   website: 'https://www.bpmiamiplaya.es',
   phone: '+34 619333640',
+  instagram: 'https://www.instagram.com/bpmiamiplaya/',
 } as const;
 
 /**
@@ -32,7 +33,7 @@ export const apartamentos = {
       title: 'Bienvenidos a B&P nuestros alojamientos en Miami Playa',
       intro:
         'Descanso, playa y naturaleza en la Costa Dorada. Alojamientos a pocos minutos de las playas de Miami Platja, ideales para desconectar.',
-      body: `Durante tu estancia, tendrás la oportunidad de desconectar y sumergirte en actividades al aire libre como senderismo por los senderos que recorren la costa o los parques naturales cercanos, disfrutar de las cristalinas aguas de la playa o simplemente relajarte bajo el sol mediterráneo. Además, la región ofrece una rica gastronomía con sus famosos pescados y arroces, así como un impresionante patrimonio cultural. En B&P Miami Playa, la comodidad y el diseño de nuestros alojamientos se complementan con la belleza del entorno, brindándote una estancia única, donde lo más importante es disfrutar de la calma, el paisaje y la experiencia completa que solo este rincón de Tarragona puede ofrecer.`,
+      body: `En B&P Alojamientos Miami Playa encontrarás alojamientos pensados para descansar y desconectar. Espacios acogedores y bien ubicados que invitan a disfrutar del entorno mediterráneo con tranquilidad y comodidad, tanto si buscas cercanía al mar como una zona más apacible.\n\nCada alojamiento cuenta con equipamiento completo y un interior cuidadosamente diseñado, donde la funcionalidad y el confort se combinan para ofrecer una estancia práctica, agradable y sin preocupaciones.`,
     },
     blue: {
       name: 'Apartamento Blue',
@@ -158,7 +159,7 @@ El salón-comedor cuenta con Smart TV de 50" y conexión WiFi. La cocina está c
       title: 'Welcome to B&P – Our accommodation in Miami Playa',
       intro:
         'Rest, beach and nature on the Costa Dorada. Accommodation just minutes from the beaches of Miami Platja, perfect for switching off.',
-      body: `During your stay, you will have the chance to unwind and enjoy outdoor activities such as hiking along the coastal trails or nearby natural parks, swimming in the crystal-clear waters of the beach, or simply relaxing under the Mediterranean sun. The region also offers rich gastronomy with its famous fish and rice dishes, as well as an impressive cultural heritage. At B&P Miami Playa, the comfort and design of our accommodation are complemented by the beauty of the surroundings, offering you a unique stay where what matters most is enjoying the calm, the landscape, and the full experience that only this corner of Tarragona can provide.`,
+      body: `At B&P Alojamientos Miami Playa you will find accommodation designed for rest and relaxation. Cosy, well-located spaces that invite you to enjoy the Mediterranean surroundings with peace and comfort, whether you are looking for proximity to the sea or a quieter area.\n\nEvery property features complete amenities and a carefully designed interior where functionality and comfort combine to offer a practical, pleasant and worry-free stay.`,
     },
     blue: {
       name: 'Apartment Blue',
@@ -284,7 +285,7 @@ The living-dining room has a 50" Smart TV and WiFi. The kitchen is fully equippe
       title: 'Benvinguts a B&P – Els nostres allotjaments a Miami Playa',
       intro:
         'Descans, platja i natura a la Costa Daurada. Allotjaments a pocs minuts de les platges de Miami Platja, ideals per desconnectar.',
-      body: `Durant la teva estada, tindràs l’oportunitat de desconnectar i submergir-te en activitats a l’aire lliure com el senderisme pels senders de la costa o els parcs naturals propers, gaudir de les aigües cristal·lines de la platja o simplement relaxar-te sota el sol mediterrani. A més, la regió ofereix una rica gastronomia amb els seus famosos peixos i arròsos, així com un patrimoni cultural impressionant. A B&P Miami Playa, la comoditat i el disseny dels nostres allotjaments es complementen amb la bellesa de l’entorn, oferint-te una estada única, on el més important és gaudir de la calma, el paisatge i l’experiència que només aquest racó de Tarragona pot oferir.`,
+      body: `A B&P Allotjaments Miami Playa trobaràs allotjaments pensats per descansar i desconnectar. Espais acollidors i ben ubicats que conviden a gaudir de l’entorn mediterrani amb tranquil·litat i comoditat, tant si busques proximitat al mar com una zona més tranquil·la.\n\nCada allotjament compta amb equipament complet i un interior acuradament dissenyat, on la funcionalitat i el confort es combinen per oferir una estada pràctica, agradable i sense preocupacions.`,
     },
     blue: {
       name: 'Apartament Blue',
