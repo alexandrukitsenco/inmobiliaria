@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logoPng from '../assets/logo.png';
 import type { Locale } from '../i18n/config';
 import { contact } from '../i18n/apartamentos';
 import { t } from '../i18n/strings';
@@ -18,7 +20,7 @@ const year = new Date().getFullYear();
       <!-- Brand & contact -->
       <div>
         <a href={`/${lang}/`} class="flex items-center gap-2 no-underline mb-4">
-          <img src="/logo.png" alt="B&P Miami Playa" class="h-10 w-auto brightness-0 invert" />
+          <Image src={logoPng} alt="B&P Miami Playa" width={80} height={80} class="h-10 w-auto brightness-0 invert" loading="lazy" />
           <span class="font-heading font-bold text-lg tracking-tight text-white">B&P Miami Playa</span>
         </a>
         <p class="text-ocean-300 text-sm mb-4">{t(lang, 'footer', 'touristRental')}</p>

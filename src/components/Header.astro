@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logoPng from '../assets/logo.png';
 import LangSelector from './LangSelector.vue';
 import MobileMenu from './MobileMenu.vue';
 import type { Locale } from '../i18n/config';
@@ -47,7 +49,7 @@ const isHome = isActive(`/${lang}`);
       "flex items-center gap-2 no-underline transition-colors shrink-0",
       isHome ? "text-ocean-600" : "text-ocean-800 hover:text-ocean-600"
     ]}>
-      <img src="/logo.png" alt="B&P Miami Playa" class="h-9 w-auto" />
+      <Image src={logoPng} alt="B&P Miami Playa" width={72} height={72} class="h-9 w-auto" loading="eager" />
       <span class="font-heading font-bold text-lg tracking-tight">B&P Miami Playa</span>
     </a>
 
@@ -78,12 +80,12 @@ const isHome = isActive(`/${lang}`);
         {contactLabel}
       </a>
       <span class="w-px h-4 bg-ocean-200"></span>
-      <LangSelector client:load currentLang={lang} pathname={pathname} />
+      <LangSelector client:idle currentLang={lang} pathname={pathname} />
     </div>
 
     <!-- Mobile menu (hidden on desktop) -->
     <MobileMenu
-      client:load
+      client:idle
       lang={lang}
       pathname={pathname}
       labels={menuLabels}

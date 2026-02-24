@@ -11,6 +11,8 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/vue": "^5.1.4",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/lora": "^5.2.8",
     "@primeuix/themes": "^2.0.3",
     "@tailwindcss/vite": "^4.1.18",
     "@vueuse/core": "^14.2.1",
